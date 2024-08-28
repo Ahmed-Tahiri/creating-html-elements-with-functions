@@ -1,5 +1,5 @@
 let body = document.body;
-let new_element_func = (
+let createElement = (
   element_name,
   element_class = null,
   elem_allocation,
@@ -34,20 +34,14 @@ let new_element_func = (
   }
 };
 
-new_element_func("div", "main_container", body);
-new_element_func("div", "sub_container", ".main_container");
-new_element_func("img", null, ".sub_container", null, {
+createElement("div", "main_container", body);
+createElement("div", "sub_container", ".main_container");
+createElement("img", null, ".sub_container", null, {
   src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXV6JCG-8u0FIIe7gAd4QAzE4bgoNVyHXzMg&s",
   alt: "An Image",
 });
-new_element_func(
-  "a",
-  "link",
-  ".sub_container",
-  "Click here to open google.com",
-  {
-    href: "www.google.com",
-    target: "_blank",
-    id: "a_link",
-  }
-);
+createElement("a", "link", ".sub_container", "Click here to open google.com", {
+  href: "www.google.com",
+  target: "_blank",
+  id: "a_link",
+});
