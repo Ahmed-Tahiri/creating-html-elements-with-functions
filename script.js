@@ -1,36 +1,36 @@
 let body = document.body;
 let createElement = (
-  element_name,
-  element_class = null,
-  elem_allocation,
-  elem_content = null,
+  newElement,
+  elementClass = null,
+  elementContainer,
+  elementContent = null,
   attributes = {}
 ) => {
-  let new_elem = document.createElement(element_name);
-  if (element_class) {
-    new_elem.classList.add(element_class);
+  let htmlElement = document.createElement(newElement);
+  if (elementClass) {
+    htmlElement.classList.add(elementClass);
   }
 
   if (attributes) {
     for (let attr_key in attributes) {
-      console.log(new_elem.setAttribute(attr_key, attributes[attr_key]));
+      htmlElement.setAttribute(attr_key, attributes[attr_key]);
     }
   }
-  if (elem_content != null) {
-    new_elem.innerHTML = elem_content;
+  if (elementContent != null) {
+    htmlElement.innerHTML = elementContent;
   }
 
-  if (typeof elem_allocation === "string") {
-    let selector = document.querySelector(elem_allocation);
-    if (selector) {
-      selector.appendChild(new_elem);
+  if (typeof elementContainer === "string") {
+    let selectParent = document.querySelector(elementContainer);
+    if (selectParent) {
+      selectParent.appendChild(htmlElement);
     } else {
       console.log(
-        `Error While creating element "${element_name}" having class name "${element_class}"`
+        `Error While creating element "${newElement}" having class name "${elementClass}"`
       );
     }
   } else {
-    elem_allocation.appendChild(new_elem);
+    elementContainer.appendChild(htmlElement);
   }
 };
 
@@ -41,7 +41,7 @@ createElement("img", null, ".sub_container", null, {
   alt: "An Image",
 });
 createElement("a", "link", ".sub_container", "Click here to open google.com", {
-  href: "www.google.com",
+  href: "https://www.google.com/",
   target: "_blank",
   id: "a_link",
 });
